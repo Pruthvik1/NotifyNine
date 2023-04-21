@@ -9,7 +9,7 @@ from pynput import keyboard, mouse
 from PIL import Image, ImageTk
 
 # Set the time limit for inactivity (in seconds)
-TIME_LIMIT = 540 # 9 minutes
+TIME_LIMIT = 5 # 9 minutes
 
 # Record the time of the last activity
 last_activity_time = time.time()
@@ -43,7 +43,7 @@ keyboard_listener.start()
 def show_notification():
     root = tk.Tk()
     root.title("NitifyNine Reminds YOU")
-    root.geometry("450x250")
+    root.geometry("550x250")
 
     # Load image and resize it to fit in the GUI
     image_path = "icon.png"  
@@ -88,11 +88,22 @@ def show_notification():
 
     root.mainloop()
 
+
+
 # Loop to check for inactivity
 while True:
     # Check if the time since the last activity exceeds the time limit
     if time.time() - last_activity_time > TIME_LIMIT:
+        # Move the mouse to prevent inactivity
+       # mouse_controller = mouse.Controller()
+        #mouse_controller.move(1, 1)
         # Display the notification
+        # Get the current time in seconds
+       # current_time = time.time()
+        # Format the time as a string with year-month-day hour:minute:second format
+        #formatted_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(current_time))
+
+       # print("Mouse moved at: ",formatted_time)
         show_notification()
 
     # Wait for 10 second before checking again
